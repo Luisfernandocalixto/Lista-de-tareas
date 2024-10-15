@@ -1,12 +1,57 @@
+<nav class="nav">
+    <div class="primary">
+        <span class="text-white">
+            Tareas
+
+        </span>
+    </div>
+
+    <div class="second">
+        <span class="text-gray pointer">Comunidad</span>
+        <span class="text-gray pointer">Documentación</span>
+        <span class="text-gray pointer">Blog</span>
+        <span class="text-gray pointer">Compañia</span>
+        <button class="text-white buttonExit">Salir</button>
+    </div>
+
+</nav>
+
+
 <div class="container">
-    <h2>Lista de tareas</h2>
-    <ul>
-        <li *ngFor="let tarea of listaTareas; let i = index">
-            {{tarea}}
-            <button (click)="eliminarTarea(i)">Eliminar</button>
-        </li>
-        <input type="text" placeholder="Nueva tarea" [(ngModel)]="nuevaTarea" class="btn-w90">
-        <br>
-        <button (click)="agregarTarea()" class="btn-w">Agregar Tarea</button>
-    </ul>
+    <section>
+        <div class="content">
+            <div class="into">
+
+                <span class="menu pointer">
+                    ➕  Mostrar
+                    <div class="contentTaskMenuM">
+                        <ul>
+                            <li *ngFor="let tarea of listaTareas; let i = index">
+                                {{tarea}}
+                                <button (click)="eliminarTarea(i)">Eliminar</button>
+                            </li>
+                            <br>
+                        </ul>
+                    </div>
+                </span>
+                
+                <h2 class="text-gray-2">Lista de tareas</h2>
+            </div>
+            <input maxlength="120" type="text" placeholder="Nueva tarea" [(ngModel)]="nuevaTarea" class="btn-w90">
+            <button (click)="agregarTarea()" class="btn-w">Agregar Tarea</button>
+        </div>
+    </section>
+    <main></main>
+    <aside>
+        <div class="contentTask">
+            <ul>
+                <li *ngFor="let tarea of listaTareas; let i = index">
+                    {{tarea}}
+                    <button (click)="eliminarTarea(i)">Eliminar</button>
+                </li>
+                <br>
+            </ul>
+        </div>
+    </aside>
+    <footer></footer>
 </div>

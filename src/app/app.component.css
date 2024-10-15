@@ -1,7 +1,61 @@
-div {
-    max-width: 400px;
-    margin: 20px auto;
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+}
 
+.primary {
+    span {
+        margin-left: 20px;
+    }
+}
+
+.second {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    button {
+        margin-right: 20px;
+    }
+}
+
+.text-gray {
+    transition: .4s;
+    color: #767676;
+
+    &:hover {
+        color: aliceblue;
+    }
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.buttonExit {
+    font-weight: 600;
+    color: #fff;
+    padding: .75rem 1rem;
+    filter: blur(.2px);
+    background-image: linear-gradient(to right, #868f96 0%, #596164 100%);
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    -webkit-filter: blur(.2px);
+}
+
+.text-white {
+    font-weight: 600;
+    color: #fff;
+}
+
+.text-gray-2 {
+    color: #ffffffb3 !important;
 }
 
 h2 {
@@ -54,11 +108,133 @@ button:hover {
     background-color: #45a049;
 }
 
-.btn-w {
-    width: 100%;
+.content {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    gap: 20px;
+
+    input {
+        width: 100%;
+
+    }
 }
 
-.btn-w90 {
-    width: 95%;
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 35px 1fr 100px;
+    height: 100vh;
+    grid-template-areas:
+        "sidebar section section"
+        "sidebar section  section"
+        "sidebar section  section"
+        "sidebar main  footer"
+    ;
 }
 
+@media (width < 600px) {
+    .container {
+        grid-template-areas:
+            "section section section"
+            "section  section section"
+            "section section section"
+            "sidebar main footer"
+        ;
+
+
+        .menu{
+            width: 20px;
+        }
+
+        .menu,
+        .contentTask {
+            display: flex;
+        }
+
+        .menu:hover {
+            .contentTaskMenuM {
+                display: flex !important;
+
+                ul li {
+                    width: 100%;
+                    gap: 20px;
+
+                }
+            }
+        }
+
+        
+
+        .contentTaskMenuM {
+            background: #464646 !important;
+            position: fixed !important;
+            z-index: 9999;
+            top: 0;
+            width: 80%;
+            height: 100%;
+            overflow-y: scroll;
+
+
+        }
+
+
+    }
+
+    .second,
+    .contentTask {
+        display: none !important;
+    }
+
+
+
+
+}
+
+.container section {
+    grid-area: section;
+}
+
+.container aside {
+    grid-area: sidebar;
+
+}
+
+.container main {
+    grid-area: main;
+}
+
+.container footer {
+    grid-area: footer;
+}
+
+.contentTask {
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.into {
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+        text-align: center;
+    }
+
+
+}
+
+.menu {
+    display: none;
+}
+
+.contentTaskMenu {
+    display: none;
+    top: 0;
+    width: 80%;
+    height: 100%;
+}
+
+.contentTaskMenuM {
+    display: none !important;
+}

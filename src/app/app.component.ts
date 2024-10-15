@@ -23,7 +23,12 @@ export class AppComponent implements OnInit {
     this.listaTareas = this._tareasService.getTareas();
   }
 
+
   agregarTarea() {
+    
+    if (!this.nuevaTarea || this.nuevaTarea.trim() === '') {
+      return
+    }
     this._tareasService.agregarTarea(this.nuevaTarea);
     this.nuevaTarea = '';
     this.listaTareas = this._tareasService.getTareas();

@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
 
 
   agregarTarea() {
-    
+    // return in case the input is empty
     if (!this.nuevaTarea || this.nuevaTarea.trim() === '') {
       return
     }

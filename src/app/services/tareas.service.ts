@@ -14,12 +14,12 @@ export class TareasService {
   agregarTarea(tarea: string) {
     const tareas = this.getTareas();
     tareas.push(tarea);
-    localStorage.setItem(this.localStorageKey, JSON.stringify(tareas))
+    localStorage.setItem(this.localStorageKey, JSON.stringify(tareas));
   }
   eliminarTarea(index: number) {
     const tareas = this.getTareas();
     tareas.splice(index, 1);
-    localStorage.setItem(this.localStorageKey, JSON.stringify(tareas))
+    localStorage.setItem(this.localStorageKey, JSON.stringify(tareas));
   }
 
 

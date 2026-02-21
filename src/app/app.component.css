@@ -1,8 +1,9 @@
+/* original css */
 .nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100px;
+    height: 100%;
 }
 
 .primary {
@@ -59,23 +60,12 @@
 }
 
 h2 {
+    text-align: center;
+    margin-top: 20px;
     color: #333;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-}
 
-li {
-    margin-bottom: 5px;
-    padding: 8px;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
 li button {
     background-color: #942b20;
@@ -109,6 +99,7 @@ button:hover {
 }
 
 .content {
+    margin: 8px;
     display: flex;
     align-content: center;
     flex-direction: column;
@@ -121,119 +112,229 @@ button:hover {
 }
 
 .container {
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 35px 1fr 100px;
     height: 100vh;
     grid-template-areas:
-        "sidebar section section"
-        "sidebar section  section"
-        "sidebar section  section"
-        "sidebar main  footer"
+        "aside section section"
+        "aside section  section"
+        "footer footer footer"
     ;
 }
 
-@media (width < 600px) {
-    .container {
-        grid-template-areas:
-            "section section section"
-            "section  section section"
-            "section section section"
-            "sidebar main footer"
-        ;
 
-
-        .menu {
-            width: 20px;
-        }
-
-        .menu,
-        .contentTask {
-            display: flex;
-        }
-
-        .menu:hover {
-            .contentTaskMenuM {
-                display: flex !important;
-
-                ul li {
-                    width: 100%;
-                    gap: 20px;
-
-                }
-            }
-        }
-
-
-
-        .contentTaskMenuM {
-            background: #464646 !important;
-            position: fixed !important;
-            z-index: 9999;
-            top: 0;
-            width: 250px;
-            height: 100%;
-
-
-
-        }
-
-
-    }
-
-    .second,
-    .contentTask {
-        display: none !important;
-    }
-
-
-
-
-}
 
 .container section {
     grid-area: section;
 }
 
-.container aside {
-    grid-area: sidebar;
-
-}
-
-.container main {
-    grid-area: main;
-}
-
-.container footer {
+.container .isFooter {
     grid-area: footer;
 }
 
-.contentTask {
-    height: 100%;
+.container aside {
+    grid-area: aside;
 }
 
-.into {
-    display: flex;
-    flex-direction: column;
+.contentTask {
+    /* position: relative; */
+    align-items: center;
+    margin-top: 90px;
+    padding: 10px;
+    word-break: break-all;
 
-    h2 {
-        text-align: center;
+    li {
+        word-wrap: break-word;
+        max-width: 400px;
+        margin-bottom: 5px;
+        padding: 8px;
+        background-color: #f0f0f0;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+/*  */
+
+.header {
+    /* display: flex; */
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    box-shadow: none;
+    position: fixed;
+    height: 60px !important;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.main {
+    margin: 0 auto;
+    display: block;
+    height: 100%;
+    margin-top: 60px;
+}
+
+.mainInner {
+    display: table;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.mainInner div {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 3em;
+    font-weight: bold;
+    letter-spacing: 1.25px;
+}
+
+.sidebarMenu {
+    background: #464646 ;
+    overflow-y: scroll;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    width: 250px;
+    margin-top: 60px;
+    transform: translateX(-250px);
+    transition: transform 250ms ease-in-out;
+    color: white;
+}
+
+.sidebarMenuInner {
+    word-wrap: break-word;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.sidebarMenuInner li {
+    list-style: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 30px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.sidebarMenuInner li span {
+    display: block;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.50);
+}
+
+.sidebarMenuInner li a {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+input[type="checkbox"]:checked~.sidebarMenu {
+    transform: translateX(0);
+}
+
+
+input[type=checkbox] {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    display: none;
+}
+
+.sidebarIconToggle {
+    display: none;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: absolute;
+    z-index: 99;
+    height: 22px;
+    width: 22px;
+    top: 22px;
+    left: 15px;
+}
+
+.spinner {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+}
+
+.horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+
+.diagonal.part-1 {
+    position: relative;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    float: left;
+}
+
+.diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+
+}
+
+input[type=checkbox]:checked~.sidebarIconToggle>.horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    opacity: 0;
+}
+
+input[type=checkbox]:checked~.sidebarIconToggle>.diagonal.part-1 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(135deg);
+    margin-top: 8px;
+}
+
+input[type=checkbox]:checked~.sidebarIconToggle>.diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(-135deg);
+    margin-top: -9px;
+}
+
+
+@media (width < 600px) {
+    .container aside {
+        display: none;
     }
 
+    .sidebarIconToggle{
+        display: block;
+    }
 
-}
-
-.menu {
-    display: none;
-}
-
-.contentTaskMenu {
-    display: none;
-    top: 0;
-    width: 80%;
-    height: 100%;
-}
-
-.contentTaskMenuM {
-    display: none !important;
+    .primary, .second {
+        display: none;
+    }
+    
+    .container {
+        grid-template-areas:
+            "section section section"
+            "footer  footer footer"
+            "aside aside aside"
+        ;
+    }
 }
